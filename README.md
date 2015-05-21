@@ -3,12 +3,7 @@
 ##### [I. Closures](#closures)
 ##### [II. Callbacks](#callbacks)
 
-
 #### <a name=closures>Closures</a>
-
-```
-http://javascriptissexy.com/understand-javascript-closures-with-ease/
-```
 
 A closure is an inner function that has access to the variables in the containing function; a function within a function. This closure function does not have to return anything to be considered a closure. Accessing the variables outside of it's own scope makes that function a closure. 
 
@@ -19,24 +14,41 @@ In the example below the console.log function is inside the read function, but i
 
 
 ```
-var b = 10;
+var b = "Game of Thrones"";
 
 function read(){
 	console.log(b);
 }
 
-read(); // 10
+read(); // "Game of Thrones"
+```
+* Note: Closures have access to the outer functions "current" value and not their "stored" value. 
+
+```
+function read(){
+	var b = "Game of Thrones"
+	
+	return{
+		sameBook: function(){
+			return b
+		}
+		newBook: function(book){
+			b = book;
+		}
+	}
+}
+
+read.newBook("Forgotten Realms"); // changes b
+read.sameBook(); // returns "Forgotten Realms"
 ```
 
+* Note to self. For loops and IIFE explaination.
 
 #### <a name=callbacks>Callbacks</a>
-```
-http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
-```
-* Callback functions are Closures
-* Callback functions can be named or anonymous
-* Review callback funtions and the use of "this"
-* A callback function is a function that is used as a parameter or argument in another function. The callback function is not activated immediated, but rather it is called back when a condition in the containing function's body is activated. In the example below the callback function is activated on the click event. 
+
+Callback functions are closures; therefore the rules of closures apply. Callbacks will have access to the containing functions scope, it's variables, and the global variables. 
+
+Callbacks can be anonymous or named, and can be used as a parameter or argument. Remember, a parameter is created when the function is created, and an argument is what is passed in when the function is invoked. The callback function is not activated immediately, but rather it is called back when a condition in the containing function's body is activated. Take a look at the jQuery click example below:
 
 ```
 //think of using a method in jQuery on a selected item
@@ -44,6 +56,8 @@ $('#button').click(function(){
 	console.log('button clicked');
 })
 ```
+
+* Review callback funtions and the use of "this"
 * Callback functions are closures. closures have access to the containing functions scope, so the callback function can access the containing functions variables, and also the global variables.
 * Callbacks can be anonymous or named functions. Instead of using an anonymous function, a user can declare a function with a variable name and pass that name into another functions parameter.
 * We can pass parameters to callback functions. Remember since this acts as a closure we can pass any of the containing functions properties or global properties. 

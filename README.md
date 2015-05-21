@@ -1,65 +1,21 @@
-# Learning Extra JavaScript
+# Learning JavaScript Concepts
 
-#### Operators
-
-* Ternatory Operator
-* Logical Operators
-	* Logical OR - ( || ) It will take the FIRST truthy value or the LAST falsy value. Will return true if either are true, and will return false if both are false. If the first option is already true, JavaScript will not read the second option
-	
-		```
-		var sexy = true || false ---> "true";
-		
-		```
-	* Logical AND - ( && ) Will return true if both parameters are true. false if one of them are false. If both are true, it will return the last value. 
-	
-		```
-		var sexy = true && "damn" ---> "damn";
-		```
-	* Logical NOT - ( ! ) This is a negation operator which basically stands for NOT. You can use this to alter your statements if needed. 
-	
-		```
-		var sexy = !false && "damn" ---> "damn";
-		```
-* Short-Circuiting - when not all values in an operator are examined. i.e. var x = true || 0. In here x will be true and the zero is never even looked at.
-
-#### Switch Block
-
-* Switch keyword takes a unique action when checking against a given value
-* cases inside the switch
-* Fall through- JS will jump to the next cases even if you define a specific case inside the switch. (if you have 10 cases and you call something on case 5, it may still return the value on case 10)
-* To stop fall through use the "break" keyword
-* Break - makes sure only one case action is taken. It will immediated exit the switch block. If you are calling case 5 it will go to case 5, run that value, then break away from the switch block and will not fall through to case 6
+##### [I. Closures](#closures)
+##### [II. Callbacks](#callbacks)
 
 
-#### Loops
-* instead of calling ".length" in the syntax of the for loop you can just make it a variable outside that for loop. (best practices?)
-	* you save a lot of memory by "caching" the .length variable 
-	* you can also cache your .length variable inside of the for loop as well.
-	
-	```
-		for (i=0, x = array.blah.length, i < x, i++){
-			console.log(array.blah[i]);
-		}
-	```
-	* notice you are creating your second variable x (you don't need to call var) and this is cahing the length. 
-	* take it one step and cache the object being called in the console.log
-	```
-		var list = array.blah;
-		for (i=0, x=array.blah.length, i<x, i++){
-			console.log(list[i])
-		}
-	```
+#### <a name=closures>Closures</a>
 
-#### Closures
 ```
 http://javascriptissexy.com/understand-javascript-closures-with-ease/
 ```
 
-* Closure is an inner function that has access to the variables of the containing function
-* A function does not have to return anything in order to be a closure. Accessing variables outside the "inner"functions scope makes that inner function a closure
-* Scope chain - closures have access to their own variables, variables in the outer function, and variables in the global scope
-* Closures do not have to be functions passed in as parameters. That would be a callback function. Callbacks are closures
-* In the example below the console.log function is inside the read function, but is still reaching variables outside of it's scope. 
+A closure is an inner function that has access to the variables in the containing function; a function within a function. This closure function does not have to return anything to be considered a closure. Accessing the variables outside of it's own scope makes that function a closure. 
+
+
+Closures have access to the variables inside themselves, the variables in the outer/containin function, and the variables in the global scope. They do NOT have to accept any parameters or arguments. 
+
+In the example below the console.log function is inside the read function, but is still reaching variables outside of it's scope. 
 
 
 ```
@@ -68,12 +24,12 @@ var b = 10;
 function read(){
 	console.log(b);
 }
+
+read(); // 10
 ```
 
-* The inner function makes reference to the variables in the containing function. Even if the containing function has already been called. 
 
-
-#### Callbacks
+#### <a name=callbacks>Callbacks</a>
 ```
 http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
 ```
@@ -148,6 +104,62 @@ console.log(baseball.team) = CodLivers
 ```
 
 * Multiple Callback functions can be passed as parameters
+
+
+
+#### Operators
+
+* Ternatory Operator
+* Logical Operators
+	* Logical OR - ( || ) It will take the FIRST truthy value or the LAST falsy value. Will return true if either are true, and will return false if both are false. If the first option is already true, JavaScript will not read the second option
+	
+		```
+		var sexy = true || false ---> "true";
+		
+		```
+	* Logical AND - ( && ) Will return true if both parameters are true. false if one of them are false. If both are true, it will return the last value. 
+	
+		```
+		var sexy = true && "damn" ---> "damn";
+		```
+	* Logical NOT - ( ! ) This is a negation operator which basically stands for NOT. You can use this to alter your statements if needed. 
+	
+		```
+		var sexy = !false && "damn" ---> "damn";
+		```
+* Short-Circuiting - when not all values in an operator are examined. i.e. var x = true || 0. In here x will be true and the zero is never even looked at.
+
+#### Switch Block
+
+* Switch keyword takes a unique action when checking against a given value
+* cases inside the switch
+* Fall through- JS will jump to the next cases even if you define a specific case inside the switch. (if you have 10 cases and you call something on case 5, it may still return the value on case 10)
+* To stop fall through use the "break" keyword
+* Break - makes sure only one case action is taken. It will immediated exit the switch block. If you are calling case 5 it will go to case 5, run that value, then break away from the switch block and will not fall through to case 6
+
+
+#### Loops
+* instead of calling ".length" in the syntax of the for loop you can just make it a variable outside that for loop. (best practices?)
+	* you save a lot of memory by "caching" the .length variable 
+	* you can also cache your .length variable inside of the for loop as well.
+	
+	```
+		for (i=0, x = array.blah.length, i < x, i++){
+			console.log(array.blah[i]);
+		}
+	```
+	* notice you are creating your second variable x (you don't need to call var) and this is cahing the length. 
+	* take it one step and cache the object being called in the console.log
+	```
+		var list = array.blah;
+		for (i=0, x=array.blah.length, i<x, i++){
+			console.log(list[i])
+		}
+	```
+
+
+
+
 
 #### Scope and Hoisting
 

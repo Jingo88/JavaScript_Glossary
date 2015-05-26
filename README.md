@@ -2,6 +2,8 @@
 
 ##### [I. Closures](#closures)
 ##### [II. Callbacks](#callbacks)
+##### [III. Switch Blocks](#switch)
+##### [IV. Operators](#operators)
 
 #### <a name=closures>Closures</a>
 
@@ -128,41 +130,35 @@ console.log(baseball.team) = CodLivers
 * Multiple Callback functions can be passed as parameters
 
 
+#### <a name=switch>Switch Block</a>
 
-#### Operators
+The switch block acts similarly to using if/else statements. They take a unique action when checking against a given value. Some important terms for using switch blocks are "case", "fall through", "break", and "default".
 
-* Ternatory Operator
-* Logical Operators
-	* Logical OR - ( || ) It will take the FIRST truthy value or the LAST falsy value. Will return true if either are true, and will return false if both are false. If the first option is already true, JavaScript will not read the second option
+* case - checking the value against the passed in expression. (think of having an if, and then an else if)
+* break - breaks are used to prevent further fall through within the switch block. Using the break keyword will immediately exit the switch block. It will only take the actions of the cases called above the break keyword, or in some instances, just that case. 
+* fall through - without ending a case with a break, JavaScript will automatically jump to the next case and action. For instance if you have ten cases, and you call something on case 5, it will return the value of case 6, then case 7, all the way to case 10 if there are no breaks in between. 
+* default - the action you take should none of the cases fit the argument called. 
+
+```
+for (i=0 ; i < word.length; i++){
+	var letter = word.charAt(i);
 	
-		```
-		var sexy = true || false ---> "true";
-		
-		```
-	* Logical AND - ( && ) Will return true if both parameters are true. false if one of them are false. If both are true, it will return the last value. 
-	
-		```
-		var sexy = true && "damn" ---> "damn";
-		```
-	* Logical NOT - ( ! ) This is a negation operator which basically stands for NOT. You can use this to alter your statements if needed. 
-	
-		```
-		var sexy = !false && "damn" ---> "damn";
-		```
-* Short-Circuiting - when not all values in an operator are examined. i.e. var x = true || 0. In here x will be true and the zero is never even looked at.
+	switch(letter){
+		case 'a':;
+		case 'e':;
+		case 'i':;
+		case 'o':;
+		case 'u': 
+			countVowels++;
+			break;
+		default: consonantsArray.push(letter);
+	};
+}
+```
 
-#### Switch Block
+* In the example above, the break keyword is used after "u" so running the for loop to check vowels within a word will check for any of the five letters in 'aeiou'. If the letter at value 'i' turns out to be a consonant it will hit the default case, where the action to be taken is to push that letter into a consonants array. 
 
-* Switch keyword takes a unique action when checking against a given value
-* cases inside the switch
-* Fall through- JS will jump to the next cases even if you define a specific case inside the switch. (if you have 10 cases and you call something on case 5, it may still return the value on case 10)
-* To stop fall through use the "break" keyword
-* Break - makes sure only one case action is taken. It will immediated exit the switch block. If you are calling case 5 it will go to case 5, run that value, then break away from the switch block and will not fall through to case 6
-
-
-http://stackoverflow.com/questions/6587756/can-a-switch-statement-take-two-arguments
-
-* The two statements below represent the same thing
+* Below will show how the switch is read similarly to if/else statements. 
 
 ```
 switch(expression){
@@ -206,6 +202,29 @@ if (true === (variable1 === a && variable 2 === b)){
 ```
 
 * Check out some of the exercises in the JavaScript Exercises Repo for more practice.
+
+
+#### <a name=operators>Operators</a>
+
+* Ternatory Operator
+* Logical Operators
+	* Logical OR - ( || ) It will take the FIRST truthy value or the LAST falsy value. Will return true if either are true, and will return false if both are false. If the first option is already true, JavaScript will not read the second option
+	
+		```
+		var sexy = true || false ---> "true";
+		
+		```
+	* Logical AND - ( && ) Will return true if both parameters are true. false if one of them are false. If both are true, it will return the last value. 
+	
+		```
+		var sexy = true && "damn" ---> "damn";
+		```
+	* Logical NOT - ( ! ) This is a negation operator which basically stands for NOT. You can use this to alter your statements if needed. 
+	
+		```
+		var sexy = !false && "damn" ---> "damn";
+		```
+* Short-Circuiting - when not all values in an operator are examined. i.e. var x = true || 0. In here x will be true and the zero is never even looked at.
 
 #### Loops
 * instead of calling ".length" in the syntax of the for loop you can just make it a variable outside that for loop. (best practices?)

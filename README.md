@@ -174,7 +174,7 @@ switch(expression){
 		break;
 }
 
-// JavaScript reads this as 
+// JavaScript will read this like:
 
 if (expression === a){
 	do this;
@@ -183,54 +183,29 @@ if (expression === a){
 }
 ```
 
-
+* Unfortunately you cannot pass in two arguments as expressions in the switch statement. However, a small work around will look like this:
 
 ```
-var check = process.argv[2];
-
-var count = 0;
-var adjacent = 0;
-
-var arr = check.split('');
-
-var consonants = [];
-
-for (i=0 ; i < check.length; i++){
-	var letter = check.charAt(i);
-	var nextLetter = check.charAt(i+1);
-
-	switch(letter){
-		case 'a':;
-		case 'e':;
-		case 'i':;
-		case 'o':;
-		case 'u': 
-			count++;
-			break;
-		default: consonants.push(letter);
-	};
-
-	switch(true){
-		case (letter==='a' || letter==='e' || letter==='i' || letter==='o' || letter==='u' )&& (nextLetter === 'a' || nextLetter==='e' || nextLetter==='i' || nextLetter==='o' || nextLetter==='u'):
-			adjacent++;
-			break;
-	}
-};
-
 switch(true){
-	case count > 1 && adjacent < 1: 
-		console.log('It checks out');
+	case variable1 === a && variable2 === b:
+		do this;
 		break;
-	case count >1 && adjacent >= 1:
-		console.log('nope');
+	case variable1 === c && variable2 === d:
+		do that;
 		break;
-	default: console.log('The vowels you seek are not here');
 }
-console.log('your consonants are ' + consonants);
+
+// JavaScript will read this like:
+
+if (true === (variable1 === a && variable 2 === b)){
+	do this;
+} else if (true === (variable1 === c && variable2 ===d)){
+	do that;
+}
 
 ```
 
-
+* Check out some of the exercises in the JavaScript Exercises Repo for more practice.
 
 #### Loops
 * instead of calling ".length" in the syntax of the for loop you can just make it a variable outside that for loop. (best practices?)

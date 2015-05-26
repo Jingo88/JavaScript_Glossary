@@ -57,19 +57,27 @@ $('#button').click(function(){
 })
 ```
 
-* Review callback funtions and the use of "this"
-* Callback functions are closures. closures have access to the containing functions scope, so the callback function can access the containing functions variables, and also the global variables.
-* Callbacks can be anonymous or named functions. Instead of using an anonymous function, a user can declare a function with a variable name and pass that name into another functions parameter.
-* We can pass parameters to callback functions. Remember since this acts as a closure we can pass any of the containing functions properties or global properties. 
+Now instead of using an anonymous function, callbacks can be named and passed in as a parameter. This is still considered to be a closure, and as mentioned earlier, has the same rules/scope as closures do. 
 
 ```
-var globalvariable = "blah"
+var globalvariable = "The Roof Is On Fire"
 
 function stuff(things, callbackfunction){
 	emptyArr.push(things);
 	callbackfunction(globalvariable, things)
 }
+
+var callbackfunction = function(x, y){
+	return x + y;
+}
 ```
+
+* Review callback funtions and the use of "this"
+* Callback functions are closures. closures have access to the containing functions scope, so the callback function can access the containing functions variables, and also the global variables.
+* Callbacks can be anonymous or named functions. Instead of using an anonymous function, a user can declare a function with a variable name and pass that name into another functions parameter.
+* We can pass parameters to callback functions. Remember since this acts as a closure we can pass any of the containing functions properties or global properties. 
+
+
 
 * If the callback is not an anonymous function we can make sure the callback is a function before executing it. We do this because if the function is called without a callback function in place it will produce a runtime error. 
 
@@ -150,6 +158,78 @@ console.log(baseball.team) = CodLivers
 * Fall through- JS will jump to the next cases even if you define a specific case inside the switch. (if you have 10 cases and you call something on case 5, it may still return the value on case 10)
 * To stop fall through use the "break" keyword
 * Break - makes sure only one case action is taken. It will immediated exit the switch block. If you are calling case 5 it will go to case 5, run that value, then break away from the switch block and will not fall through to case 6
+
+
+http://stackoverflow.com/questions/6587756/can-a-switch-statement-take-two-arguments
+
+* The two statements below represent the same thing
+
+```
+switch(expression){
+	case a: 
+		do this;
+		break;
+	case b: 
+		do that;
+		break;
+}
+
+// JavaScript reads this as 
+
+if (expression === a){
+	do this;
+} else if (expression === b) {
+	do that;
+}
+```
+
+
+
+```
+var check = process.argv[2];
+
+var count = 0;
+var adjacent = 0;
+
+var arr = check.split('');
+
+var consonants = [];
+
+for (i=0 ; i < check.length; i++){
+	var letter = check.charAt(i);
+	var nextLetter = check.charAt(i+1);
+
+	switch(letter){
+		case 'a':;
+		case 'e':;
+		case 'i':;
+		case 'o':;
+		case 'u': 
+			count++;
+			break;
+		default: consonants.push(letter);
+	};
+
+	switch(true){
+		case (letter==='a' || letter==='e' || letter==='i' || letter==='o' || letter==='u' )&& (nextLetter === 'a' || nextLetter==='e' || nextLetter==='i' || nextLetter==='o' || nextLetter==='u'):
+			adjacent++;
+			break;
+	}
+};
+
+switch(true){
+	case count > 1 && adjacent < 1: 
+		console.log('It checks out');
+		break;
+	case count >1 && adjacent >= 1:
+		console.log('nope');
+		break;
+	default: console.log('The vowels you seek are not here');
+}
+console.log('your consonants are ' + consonants);
+
+```
+
 
 
 #### Loops
